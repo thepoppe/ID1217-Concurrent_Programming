@@ -23,32 +23,15 @@ int valid_position(coordinate *c){
 	return 0;
 }
 
-void place_queen(int count, queen* queens){
-	if (count >= MAX_QUEENS){
-		return;
-	}
-	coordinate c1;
-	c1.x = 'a' + count;
-	c1.y = count + 1;
-	if (valid_position(&c1) == -1){
-		printf("Invalid\n");
-		return;
-	}
-	queen q1;
-	q1.num = count +1;
-	q1.c = c1;
-	//printf("Queen placed\n");
-	queens[count] = q1;
-	place_queen(count +1, queens);
-}
 
 
 void find_solutions(queen* queens, int queen_num){
 	if(queen_num >= MAX_QUEENS){
+		found_solutions++;
 		return;
 	}
 	int x = 'a';
-	printf("y=%d\n",queen_num);
+	//printf("y=%d\n",queen_num);
 	while (x <='h'){
 		queen q = queens[queen_num];
 		coordinate c;
@@ -56,7 +39,6 @@ void find_solutions(queen* queens, int queen_num){
 		c.y = queen_num;
 		q.c = c;
 		find_solutions(queens, queen_num +1);
-		found_solutions++;
 		//printf("x:%d\n",x);
 		x++;
 	}
