@@ -25,9 +25,51 @@ int valid_position(coordinate *c){
 
 
 
+int check_remaining_queens(int start, char* positions){
+	int x_compare_pos = positions[start];
+	int j = 1;
+	for(int i = start +1; i < MAX_QUEENS; i++){
+		if(positions[i] == x_compare_pos){
+			return -1;
+		}
+		if (positions[i] + j == x_compare_pos){
+			return -1;
+		}
+		if (positions[i] - j == x_compare_pos){
+			return -1;
+		}
+		j++;
+	}
+	return 0;
+}
+
+
+void verify_solution(char * positions){
+	for (int i = 0; i < MAX_QUEENS; i++){
+		if (check_remaining_queens(i, positions) == -1){
+			return;
+		}
+	}
+	found_solutions++;
+}
+
+void queens_to_array(queen * queens, char * arr){
+	for(int i = 0; i < MAX_QUEENS;i++){
+		arr[i] = queens[i].c.x;
+	}
+	/*
+	for(int i = 0; i< MAX_QUEENS; i++){
+		printf("%d,",arr[i]);
+	}
+	printf("\n");
+	*/
+}
+
 void find_solutions(queen* queens, int queen_num){
 	if(queen_num >= MAX_QUEENS){
-		found_solutions++;
+		char x_positions[MAX_QUEENS];
+		queens_to_array(queens, x_positions);
+		verify_solution(x_positions);
 		return;
 	}
 	int x = 'a';
@@ -38,6 +80,7 @@ void find_solutions(queen* queens, int queen_num){
 		c.x = x;
 		c.y = queen_num;
 		q.c = c;
+		queens[queen_num] = q;
 		find_solutions(queens, queen_num +1);
 		//printf("x:%d\n",x);
 		x++;
@@ -62,6 +105,7 @@ int main(){
 	}
 	find_solutions(queens, 0);
 	//print_queens(queens);
+	free(queens);
 	printf("%d\n", found_solutions);
 	return 0;
 }
