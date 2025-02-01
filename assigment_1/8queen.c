@@ -106,7 +106,7 @@ int main(){
 	find_solutions(queens, 0);
 	//print_queens(queens);
 	free(queens);
-	printf("%d\n", found_solutions);
+	printf("There are %d solutions for the 8 queen problem\n", found_solutions);
 	return 0;
 }
 
