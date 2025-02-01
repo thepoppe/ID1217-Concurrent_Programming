@@ -8,11 +8,10 @@
 #include <sys/time.h>
 
 #define MAX_QUEENS 8
-#define N_THREADS 1
+#define N_THREADS 4
 #define BATCH_SIZE 1000
 #define POISON_PILL NULL
-int pushed = 0;
-int popped = 0;
+
 
 typedef struct coordinate{
 	char x;
@@ -39,6 +38,7 @@ pthread_mutex_t queue_lock;
 pthread_cond_t can_produce;
 pthread_cond_t can_consume;
 
+
 /* FIFO QUEUE */
 void init_queue(){
 	pthread_mutex_lock(&queue_lock);
@@ -53,15 +53,12 @@ void push(char* arr){
 	while (queue.total == BATCH_SIZE){
 		pthread_cond_wait(&can_produce, &queue_lock);
 	}
-	//pushed ++;
-	//printf("pushed:%d\n",pushed);
 
 	queue.jobs[queue.last] = arr;
 	queue.total++;
 	queue.last = (queue.last +1) % BATCH_SIZE;
 
 	pthread_cond_signal(&can_consume);
-
 	pthread_mutex_unlock(&queue_lock);
 }
 
@@ -73,22 +70,20 @@ char* pop(){
 	while (queue.total == 0){
 		pthread_cond_wait(&can_consume, &queue_lock);
 	}
-	//popped++;
-	//printf("popped:%d\n",popped);
+
 	arr = queue.jobs[queue.first];
 	queue.jobs[queue.first] = NULL;
 	queue.total--;
 	queue.first = (queue.first + 1) % BATCH_SIZE;
 
 	pthread_cond_signal(&can_produce);
-
 	pthread_mutex_unlock(&queue_lock);
 
 	return arr;
 }
 
 
-
+// Consumer
 int check_remaining_queens(int start, char* positions){
 	int x_compare_pos = positions[start];
 	int j = 1;
@@ -107,7 +102,6 @@ int check_remaining_queens(int start, char* positions){
 	return 0;
 }
 
-//threads
 void verify_solution(char * positions){
 	for (int i = 0; i < MAX_QUEENS; i++){
 		if (check_remaining_queens(i, positions) == -1){
@@ -119,6 +113,31 @@ void verify_solution(char * positions){
 	pthread_mutex_unlock(&solutions_lock);
 }
 
+void* collect_and_test(void* index){
+	int id = *(int*)index;
+	while(1){
+		char* solution = pop();
+		if(solution == POISON_PILL){
+			printf("Poison recieved. Terminating thread %d\n", id);
+			free(solution);
+			break;
+		}
+		verify_solution(solution);
+		free(solution);
+	}
+	return NULL;
+}
+
+
+// Producer
+void queue_poison(){
+	printf("Sending poison pill to workers\n");
+	for (int i = 0; i < N_THREADS; i++){
+		push(POISON_PILL);
+	}
+	return;
+}
+
 void queens_to_array(queen * queens, char * arr){
 	for(int i = 0; i < MAX_QUEENS;i++){
 		arr[i] = queens[i].c.x;
@@ -127,13 +146,17 @@ void queens_to_array(queen * queens, char * arr){
 
 void queue_solutions(queen* queens, int queen_num){
 	if(queen_num >= MAX_QUEENS){
-		char solution[MAX_QUEENS];
+		char* solution = malloc(MAX_QUEENS * sizeof(char));
+		if (solution == NULL){
+			perror("Issue allocation memory for the solution");
+			exit(EXIT_FAILURE);
+		}
 		queens_to_array(queens, solution);
 		push(solution);
 		return;
 	}
+
 	int x = 'a';
-	//printf("y=%d\n",queen_num);
 	while (x <='h'){
 		queen q = queens[queen_num];
 		coordinate c;
@@ -142,11 +165,12 @@ void queue_solutions(queen* queens, int queen_num){
 		q.c = c;
 		queens[queen_num] = q;
 		queue_solutions(queens, queen_num +1);
-		//printf("x:%d\n",x);
 		x++;
 	}
 }
 
+
+// Utility
 void print_queens(queen * queens){
 	for (int i = 0; i < MAX_QUEENS; i ++){
 		queen q = queens[i];
@@ -155,46 +179,19 @@ void print_queens(queen * queens){
 		printf("Queen %d: (%c,%d)\n", num, c.x, c.y);
 	}
 }
-void* thread_pop_test(void* args){
-	while(1){
-	pthread_mutex_lock(&queue_lock);
-	if (queue.total == BATCH_SIZE){
-		pthread_mutex_unlock(&queue_lock);
-		char c[8];
-		pop(c);
-		break;
-	}
-	pthread_mutex_unlock(&queue_lock);
-	usleep(1);
-	}
-	return NULL;
+
+void init(){
+	init_queue();
+	pthread_mutex_init(&solutions_lock, NULL);
+	pthread_mutex_init(&queue_lock, NULL);
+	pthread_cond_init(&can_consume, NULL);
+	pthread_cond_init(&can_produce, NULL);
+
 }
 
-void* collect_and_test( void* args){
-	while(1){
-		char* solution = pop();
-		if(solution == POISON_PILL){
-			printf("Poison recieved, terminating, %ld\n", pthread_self());
-			break;
-		}
-		verify_solution(solution);
-		
-	}
-	
-	return NULL;
-}
-
-
-void queue_poison(){
-	printf("Sending poison pill to workers\n");
-	for (int i = 0; i < N_THREADS + 10; i++){
-		push(POISON_PILL);
-	}
-	return;
-}
 
 int main(){
-	init_queue();
+	init();
 	queen *queens = (queen *) malloc(8 * sizeof(queen));
 	for (int i = 0; i< MAX_QUEENS; i++){
 		queen q;
@@ -202,12 +199,16 @@ int main(){
 		queens[i] = q;
 	}
 	pthread_t pids[N_THREADS];
+	int indexes[N_THREADS];
 	for(int i = 0; i < N_THREADS;i++){
-		pthread_create(&pids[i],NULL, collect_and_test, NULL);
+		indexes[i] = i;
+		if (pthread_create(&pids[i],NULL, collect_and_test, &indexes[i]) != 0){
+			perror("Failed to create thread");
+			exit(EXIT_FAILURE);
+		}
 	}
 
 	queue_solutions(queens, 0);
-
 	queue_poison();
 
 
@@ -218,4 +219,3 @@ int main(){
 	printf("There are %d solutions for the 8 queen problem\n", found_solutions);
 	return 0;
 }
-
