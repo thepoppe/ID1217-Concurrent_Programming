@@ -119,7 +119,6 @@ void* collect_and_test(void* index){
 	while(1){
 		char* solution = pop();
 		if(solution == POISON_PILL){
-			//printf("Poison recieved. Terminating thread %d\n", id);
 			free(solution);
 			break;
 		}
@@ -132,7 +131,6 @@ void* collect_and_test(void* index){
 
 // Producer
 void queue_poison(){
-	//printf("Sending poison pill to workers\n");
 	for (int i = 0; i < N_THREADS; i++){
 		push(POISON_PILL);
 	}
@@ -182,12 +180,11 @@ void print_queens(queen * queens){
 }
 
 void init(){
-	init_queue();
 	pthread_mutex_init(&solutions_lock, NULL);
 	pthread_mutex_init(&queue_lock, NULL);
 	pthread_cond_init(&can_consume, NULL);
 	pthread_cond_init(&can_produce, NULL);
-
+	init_queue();
 }
 
 /* timer copied from matrixSum.c*/
@@ -203,9 +200,6 @@ initialized = true;
 gettimeofday( &end, NULL );
 return (end.tv_sec - start.tv_sec) + 1.0e-6 * (end.tv_usec - start.tv_usec);
 }
-
-
-
 
 
 int main(){
@@ -231,7 +225,6 @@ int main(){
 
 	queue_solutions(queens, 0);
 	queue_poison();
-
 
 	for (int i = 0; i < N_THREADS; i++){
 		pthread_join(pids[i], NULL);
