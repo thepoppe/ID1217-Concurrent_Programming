@@ -3,8 +3,9 @@
 #endif
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <stdbool.h>
 #include <pthread.h>
+#include <time.h>
 #include <sys/time.h>
 
 #define MAX_QUEENS 8
@@ -118,7 +119,7 @@ void* collect_and_test(void* index){
 	while(1){
 		char* solution = pop();
 		if(solution == POISON_PILL){
-			printf("Poison recieved. Terminating thread %d\n", id);
+			//printf("Poison recieved. Terminating thread %d\n", id);
 			free(solution);
 			break;
 		}
@@ -131,7 +132,7 @@ void* collect_and_test(void* index){
 
 // Producer
 void queue_poison(){
-	printf("Sending poison pill to workers\n");
+	//printf("Sending poison pill to workers\n");
 	for (int i = 0; i < N_THREADS; i++){
 		push(POISON_PILL);
 	}
@@ -189,9 +190,27 @@ void init(){
 
 }
 
+/* timer copied from matrixSum.c*/
+double read_timer() {
+static bool initialized = false;
+static struct timeval start;
+struct timeval end;
+if( !initialized )
+{
+gettimeofday( &start, NULL );
+initialized = true;
+}
+gettimeofday( &end, NULL );
+return (end.tv_sec - start.tv_sec) + 1.0e-6 * (end.tv_usec - start.tv_usec);
+}
+
+
+
+
 
 int main(){
 	init();
+	double time;
 	queen *queens = (queen *) malloc(8 * sizeof(queen));
 	for (int i = 0; i< MAX_QUEENS; i++){
 		queen q;
@@ -200,6 +219,8 @@ int main(){
 	}
 	pthread_t pids[N_THREADS];
 	int indexes[N_THREADS];
+
+	time = read_timer();
 	for(int i = 0; i < N_THREADS;i++){
 		indexes[i] = i;
 		if (pthread_create(&pids[i],NULL, collect_and_test, &indexes[i]) != 0){
@@ -215,7 +236,9 @@ int main(){
 	for (int i = 0; i < N_THREADS; i++){
 		pthread_join(pids[i], NULL);
 	}
+	time = read_timer();
 	free(queens);
 	printf("There are %d solutions for the 8 queen problem\n", found_solutions);
+    printf("Execution time with %d threads: %.4f\n", N_THREADS, time);
 	return 0;
 }

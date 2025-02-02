@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <time.h>
+#include <sys/time.h>
 
 #define MAX_QUEENS 8
 
@@ -96,17 +99,37 @@ void print_queens(queen * queens){
 	}
 }
 
+/* timer copied from matrixSum.c*/
+double read_timer() {
+static bool initialized = false;
+static struct timeval start;
+struct timeval end;
+if( !initialized )
+{
+gettimeofday( &start, NULL );
+initialized = true;
+}
+gettimeofday( &end, NULL );
+return (end.tv_sec - start.tv_sec) + 1.0e-6 * (end.tv_usec - start.tv_usec);
+}
+
+
+
 int main(){
+    double t0,t1;
 	queen *queens = (queen *) malloc(8 * sizeof(queen));
 	for (int i = 0; i< MAX_QUEENS; i++){
 		queen q;
 		q.num = i + 1;
 		queens[i] = q;
 	}
+	t0 = read_timer();
 	find_solutions(queens, 0);
 	//print_queens(queens);
+	t1 = read_timer();
 	free(queens);
 	printf("There are %d solutions for the 8 queen problem\n", found_solutions);
+    printf("Execution time: %.4f\n",t1);
 	return 0;
 }
 
