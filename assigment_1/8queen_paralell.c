@@ -9,7 +9,7 @@
 #include <sys/time.h>
 
 #define MAX_QUEENS 8
-#define N_THREADS 4
+#define N_THREADS 3
 #define BATCH_SIZE 1000
 #define POISON_PILL NULL
 
