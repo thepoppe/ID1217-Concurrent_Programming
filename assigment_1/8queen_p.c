@@ -9,7 +9,7 @@
 #include <sys/time.h>
 
 #define MAX_QUEENS 8
-#define N_THREADS 1
+#define N_THREADS 3
 #define BATCH_SIZE 1000
 #define POISON_PILL NULL
 
@@ -74,20 +74,20 @@ void push(queen* queens){
 }
 
 
-void pop(char * arr){
+void pop(char ** arr){
 	pthread_mutex_lock(&queue_lock);
 	while (queue.total == 0){
 		pthread_cond_wait(&can_consume, &queue_lock);
 	}
 	if(queue.jobs[queue.first] == POISON_PILL){
-		arr = POISON_PILL;
+		*arr = POISON_PILL;
 	}
 	else{
 		for(int i = 0; i < MAX_QUEENS; i++){
-			arr[i] = queue.jobs[queue.first][i];
+			(*arr)[i] = queue.jobs[queue.first][i];
 		}
 	}
-	queue.jobs[queue.first] = NULL;
+	//queue.jobs[queue.first] = NULL;
 	queue.total--;
 	queue.first = (queue.first + 1) % BATCH_SIZE;
 
@@ -131,7 +131,7 @@ void* collect_and_test(void* index){
 	int id = *(int*)index;
 	char * solution = malloc(8* sizeof(char));
 	while(1){
-		pop(solution);
+		pop(&solution);
 		if(solution == POISON_PILL){
 			//printf("Poison recieved. Terminating thread %d\n", id);
 			break;
@@ -179,12 +179,12 @@ void print_queens(queen * queens){
 }
 
 void init(){
-	init_queue();
 	pthread_mutex_init(&solutions_lock, NULL);
 	pthread_mutex_init(&queue_lock, NULL);
 	pthread_cond_init(&can_consume, NULL);
 	pthread_cond_init(&can_produce, NULL);
 
+	init_queue();
 }
 
 /* timer copied from matrixSum.c*/
