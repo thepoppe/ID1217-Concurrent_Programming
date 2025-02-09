@@ -85,7 +85,7 @@ void sort(double *arr){
 
 
 int main(){
-	printf("%-8s%-8s%-8s\n","Threads", "Time", "Solutions");
+	printf("%-10s%-10s%s\n","Threads", "Time", "Solutions");
 	for (int threads = 1; threads <= MAX_THREADS; threads++){
 		double times[MAX_ROUNDS];
 		for (int round = 0; round < MAX_ROUNDS; round++){
@@ -101,7 +101,7 @@ int main(){
 			times[round] = calculate_time(t0,t1);
 		}
 		sort(times);
-		printf("%-8d%-8.8f%-8d\n", threads, times[MAX_ROUNDS/2], solutions);
+		printf("%-10d%-10.7f%d\n", threads, times[MAX_ROUNDS/2], solutions);
     }
 	return 0;
 }
