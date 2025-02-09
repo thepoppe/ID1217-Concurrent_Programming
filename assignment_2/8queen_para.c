@@ -7,7 +7,7 @@
 
 #define MAX_QUEENS 8
 #define MAX_THREADS MAX_QUEENS
-#define MAX_ROUNDS 20
+#define MAX_ROUNDS 40
 
 int found_solutions = 0;
 
@@ -96,13 +96,12 @@ int main(){
 		double times[MAX_ROUNDS];
 		for (int round = 0; round < MAX_ROUNDS; round++){
 			found_solutions = 0;
-    		struct timeval t0,t1;
 
-			gettimeofday(&t0, NULL );
+			double t0 = omp_get_wtime();
 			find_solutions(threads);
-			gettimeofday(&t1, NULL );
+			double t1 = omp_get_wtime();
 
-			times[round] = calculate_time(t0,t1);
+			times[round] = t1 - t0;
 		}
 		sort(times);
 		printf("%-8d%-8.4f%-8d\n", threads, times[MAX_ROUNDS/2], found_solutions);

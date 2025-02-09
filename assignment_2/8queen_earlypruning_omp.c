@@ -94,15 +94,14 @@ int main(){
 		double times[MAX_ROUNDS];
 		for (int round = 0; round < MAX_ROUNDS; round++){
 			solutions = 0;
-			omp_set_num_threads(threads);
-    		struct timeval t0,t1;
 
-			gettimeofday(&t0, NULL );
+			double t0 = omp_get_wtime();
+			omp_set_num_threads(threads);
 			solution_t queens;
 			place_first_queen(queens, 0);
-			gettimeofday(&t1, NULL );
-
-			times[round] = calculate_time(t0,t1);
+			double t1 = omp_get_wtime();
+			
+			times[round] = t1-t0;
 		}
 		sort(times);
 		printf("%-10d%-10.7f%d\n", threads, times[MAX_ROUNDS / 2], solutions);
