@@ -60,7 +60,7 @@ void place_remaining_queens(solution_t queens,int queen_num){
 void find_solutions(int threads){
 
 	omp_set_num_threads(threads);
-	#pragma omp parallel
+	#pragma omp parallel for
 	for(int x = 'a'; x <= 'h'; x++){
 		solution_t q;
 		q.pos[0] = x;
