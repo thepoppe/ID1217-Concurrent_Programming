@@ -60,7 +60,7 @@ void place_remaining_queens(solution_t queens,int queen_num){
 void find_solutions(int threads){
 
 	omp_set_num_threads(threads);
-	#pragma omp parallel for
+	#pragma omp parallel
 	for(int x = 'a'; x <= 'h'; x++){
 		solution_t q;
 		q.pos[0] = x;
@@ -74,7 +74,21 @@ double calculate_time(struct timeval start, struct timeval end){
 	return (end.tv_sec - start.tv_sec) + 1.0e-6 * (end.tv_usec - start.tv_usec);
 }
 
-
+void sort(double * arr){
+	for (int i = 0; i < MAX_ROUNDS -1; i++){
+		int min = i;
+		for (int j = 0; j < MAX_ROUNDS; j++){
+			if(arr[j] < arr[min]){
+				min = j;
+			}
+		}
+		if (min != i){
+			double temp = arr[i];
+			arr[i] = arr[min];
+			arr[min] = temp;
+		}
+	}
+}
 
 int main(){
 	printf("%-8s%-8s%-8s\n","Threads", "Time", "Solutions");
@@ -90,6 +104,7 @@ int main(){
 
 			times[round] = calculate_time(t0,t1);
 		}
+		sort(times);
 		printf("%-8d%-8.4f%-8d\n", threads, times[MAX_ROUNDS/2], found_solutions);
     }
 	return 0;
