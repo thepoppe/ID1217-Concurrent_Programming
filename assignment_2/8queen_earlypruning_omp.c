@@ -7,7 +7,7 @@
 
 #define MAX_QUEENS 8
 #define MAX_THREADS 8
-#define MAX_ROUNDS 100
+#define MAX_ROUNDS 1000
 
 int solutions = 0;
 
@@ -73,12 +73,16 @@ double calculate_time(struct timeval start, struct timeval end){
 
 void sort(double *arr){
 	for(int i = 0; i < MAX_ROUNDS -1; i++){
-		for (int j = 0; j < MAX_ROUNDS; j++){
-			if (arr[i] > arr[j]){
-				double temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
+		int min = i;
+		for (int j = i + 1; j < MAX_ROUNDS; j++){
+			if (arr[j] < arr[min]){
+				min = j;
 			}
+		}
+		if (min != i){
+			double temp = arr[i];
+			arr[i] = arr[min];
+			arr[min] = temp;
 		}
 	}
 }
@@ -101,7 +105,7 @@ int main(){
 			times[round] = calculate_time(t0,t1);
 		}
 		sort(times);
-		printf("%-10d%-10.7f%d\n", threads, times[MAX_ROUNDS/2], solutions);
+		printf("%-10d%-10.7f%d\n", threads, times[MAX_ROUNDS / 2], solutions);
     }
 	return 0;
 }
