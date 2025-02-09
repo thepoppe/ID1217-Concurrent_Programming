@@ -95,7 +95,7 @@ int main(){
 
 			gettimeofday(&t0, NULL );
 			solution_t queens;
-			place_queen(queens, 0);
+			place_first_queen(queens, 0);
 			gettimeofday(&t1, NULL );
 
 			times[round] = calculate_time(t0,t1);
