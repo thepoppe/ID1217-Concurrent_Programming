@@ -1,0 +1,255 @@
+Man 0 created
+Man 1 created
+Man 2 created
+Man 3 created
+Man 4 created
+Woman 0 created
+Woman 1 created
+Woman 2 created
+Woman 4 created
+Woman 3 created
+0	Man 0 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+1	Man 3 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+2	Woman 3 is waiting. Queue of women:1
+3	Man 3 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+4	Woman 4 is waiting. Queue of women:2
+5	Man 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+6	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+7	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+8	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+9	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+10	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+11	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+12	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+13	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+14	Man 4 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+15	Man 0 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+16	Man 2 enters the bathroom. Men in bathroom: 3. Women in bathroom: 0
+17	Man 0 leaves the bathroom. Men in bathroom: 2. Women in bathroom: 0
+18	Man 2 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+19	Man 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+20	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+21	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+22	Man 0 is waiting. Queue of men:1
+23	Woman 1 is waiting. Queue of women:1
+24	Woman 3 is waiting. Queue of women:2
+25	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+26	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+27	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 3
+28	Man 1 is waiting. Queue of men:2
+29	Man 4 is waiting. Queue of men:3
+30	Woman 4 is waiting. Queue of women:1
+31	Man 3 is waiting. Queue of men:4
+32	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 2
+33	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 3
+34	Man 2 is waiting. Queue of men:5
+35	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 2
+36	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+37	Woman 0 is waiting. Queue of women:1
+38	Woman 1 is waiting. Queue of women:2
+39	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+40	Man 0 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+41	Man 1 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+42	Man 4 enters the bathroom. Men in bathroom: 3. Women in bathroom: 0
+43	Man 3 enters the bathroom. Men in bathroom: 4. Women in bathroom: 0
+44	Man 2 enters the bathroom. Men in bathroom: 5. Women in bathroom: 0
+45	Man 3 leaves the bathroom. Men in bathroom: 4. Women in bathroom: 0
+46	Man 4 leaves the bathroom. Men in bathroom: 3. Women in bathroom: 0
+47	Man 0 leaves the bathroom. Men in bathroom: 2. Women in bathroom: 0
+48	Man 1 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+49	Man 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+50	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+51	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+52	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 3
+53	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 2
+54	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+55	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+56	Man 3 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+57	Man 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+58	Man 0 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+59	Man 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+60	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+61	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+62	Man 2 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+63	Man 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+64	Man 4 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+65	Man 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+66	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+67	Man 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+68	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+69	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+70	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 3
+71	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 2
+72	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+73	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+74	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+75	Man 3 is waiting. Queue of men:1
+76	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+77	Man 3 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+78	Woman 3 is waiting. Queue of women:1
+79	Woman 4 is waiting. Queue of women:2
+80	Man 0 is waiting. Queue of men:1
+81	Man 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+82	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+83	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+84	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+85	Man 3 is waiting. Queue of men:2
+86	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+87	Man 0 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+88	Man 3 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+89	Man 3 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+90	Man 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+91	Man 2 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+92	Man 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+93	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+94	Man 4 is waiting. Queue of men:1
+95	Woman 2 is waiting. Queue of women:1
+96	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+97	Man 4 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+98	Man 1 is waiting. Queue of men:1
+99	Man 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+100	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+101	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+102	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+103	Woman 1 is waiting. Queue of women:1
+104	Man 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+105	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+106	Man 3 is waiting. Queue of men:1
+107	Man 2 is waiting. Queue of men:2
+108	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+109	Man 3 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+110	Man 2 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+111	Man 3 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+112	Man 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+113	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+114	Man 0 is waiting. Queue of men:1
+115	Man 3 is waiting. Queue of men:2
+116	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+117	Man 0 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+118	Man 3 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+119	Woman 4 is waiting. Queue of women:1
+120	Man 4 is waiting. Queue of men:1
+121	Woman 3 is waiting. Queue of women:2
+122	Woman 1 is waiting. Queue of women:3
+123	Woman 0 is waiting. Queue of women:4
+124	Man 3 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+125	Man 4 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+126	Woman 2 is waiting. Queue of women:5
+127	Man 0 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+128	Man 1 is waiting. Queue of men:1
+129	Man 2 is waiting. Queue of men:2
+130	Man 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+131	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+132	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+133	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 3
+134	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 4
+135	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 5
+136	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 4
+137	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 3
+138	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 2
+139	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+140	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+141	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+142	Man 2 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+143	Man 0 enters the bathroom. Men in bathroom: 3. Women in bathroom: 0
+144	Man 0 leaves the bathroom. Men in bathroom: 2. Women in bathroom: 0
+145	Man 1 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+146	Man 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+147	Man 3 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+148	Man 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+149	Man 0 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+150	Man 4 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+151	Man 0 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+152	Man 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+153	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+154	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+155	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+156	Woman 1 is waiting. Queue of women:1
+157	Man 4 is waiting. Queue of men:1
+158	Woman 0 is waiting. Queue of women:2
+159	Woman 2 is waiting. Queue of women:3
+160	Woman 3 is waiting. Queue of women:4
+161	Man 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+162	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+163	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+164	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 3
+165	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 4
+166	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 3
+167	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 2
+168	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+169	Man 0 is waiting. Queue of men:2
+170	Man 2 is waiting. Queue of men:3
+171	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+172	Man 4 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+173	Man 0 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+174	Man 2 enters the bathroom. Men in bathroom: 3. Women in bathroom: 0
+175	Man 0 leaves the bathroom. Men in bathroom: 2. Women in bathroom: 0
+176	Man 4 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+177	Man 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+178	Man 3 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+179	Man 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+180	Man 0 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+181	Man 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+182	Man 4 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+183	Woman 1 is waiting. Queue of women:1
+184	Man 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+185	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+186	Man 1 is waiting. Queue of men:1
+187	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+188	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+189	Man 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+190	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+191	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+192	Man 3 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+193	Man 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+194	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+195	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+196	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+197	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+198	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+199	Woman 2 is waiting. Queue of women:1
+200	Man 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+201	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+202	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+203	Man 4 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+204	Man 2 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+205	Man 4 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+206	Man 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+207	Woman 1 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+208	Woman 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+209	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+210	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+211	Man 4 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+212	Man 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+213	Woman 2 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+214	Man 1 is waiting. Queue of men:1
+215	Woman 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+216	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+217	Man 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+218	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+219	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+220	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+221	Man 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+222	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+223	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+224	Man 1 is waiting. Queue of men:1
+225	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+226	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+227	Man 1 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+228	Man 2 enters the bathroom. Men in bathroom: 2. Women in bathroom: 0
+229	Man 2 leaves the bathroom. Men in bathroom: 1. Women in bathroom: 0
+230	Man 1 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+231	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+232	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+233	Man 2 enters the bathroom. Men in bathroom: 1. Women in bathroom: 0
+234	Man 2 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+235	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+236	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+237	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+238	Woman 0 enters the bathroom. Men in bathroom: 0. Women in bathroom: 2
+239	Woman 0 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 1
+240	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+241	Woman 3 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+242	Woman 3 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
+243	Woman 4 enters the bathroom. Men in bathroom: 0. Women in bathroom: 1
+244	Woman 4 leaves the bathroom. Men in bathroom: 0. Women in bathroom: 0
