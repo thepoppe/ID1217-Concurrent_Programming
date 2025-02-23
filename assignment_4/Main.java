@@ -37,30 +37,32 @@ Is your solution fair? Explain when presenting homework.
  */
 public class Main{
     public static void main(String[] args){
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 1; i++){
             runSimulation();
         }
     }
     private static void runSimulation(){
         boolean useFifo = true;
-        int nofVehicles = 100;
-        int nofSupplyVehicles = 15;
-        int maxDocks = 10;
-        int quantity = 1000 * maxDocks;
+        int nofVehicles = 10;
+        int nofSupplyVehicles = 2;
+        int maxDocks = 3;
+        int quantity = 500 * maxDocks;
+        int requests = 3;
         
         FuelStation station = new FuelStation(quantity, maxDocks, useFifo);
         Thread[] threads = new Thread[nofVehicles];
         Thread[] supplyThreads = new Thread[nofSupplyVehicles];
 
         for (int i = 0; i < nofVehicles; i++){
-            threads[i] = new Thread(new Vehicle(station, i+1, 100, 100, 5));
+            threads[i] = new Thread(new Vehicle(station, i+1, 100, 100, requests));
         }
         for (int i = 0; i < nofSupplyVehicles; i++){
             supplyThreads[i] = new Thread(new SupplyVehicle(station, i+1, 200, 200));
         }
 
-        System.out.println("Fuelstation init:\n" + station);
+        System.out.println(station);
         System.out.printf("%d SpaceVehicles and %d SupplyVehicles running\n", nofVehicles, nofSupplyVehicles);
+        System.out.println("Vehicle max fuel request: 100, Number of request: "+requests+"\nSupplyVehicle deposit: 500\n");
         System.out.println("Simulation starting...\n");
 
         for (int i = 0; i < nofVehicles; i++) {

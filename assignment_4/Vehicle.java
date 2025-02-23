@@ -24,7 +24,7 @@ public class Vehicle implements Runnable{
 
     protected void sleepLong(){
         try {
-            Thread.sleep(1000 + random.nextInt(1000));
+            Thread.sleep(500 + random.nextInt(1000));
         } catch (InterruptedException e) {
             System.err.println("sleepLong failed");
         }

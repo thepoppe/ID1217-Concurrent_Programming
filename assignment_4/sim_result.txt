@@ -1,0 +1,111 @@
+FuelStation Status - Nitrogen: 1500/1500, Quantum: 1500/1500, Occupied Stations: 0/3, useFifo: true, Simulation Over: false
+10 SpaceVehicles and 2 SupplyVehicles running
+Vehicle max fuel request: 100, Number of request: 3
+SupplyVehicle deposit: 500
+
+Simulation starting...
+
+Vehicle 10 requested a dock. Available docks:3
+Vehicle 10 enters. Available docks:2. Nitrogen:1500 Quantum:1500
+Vehicle 4 requested a dock. Available docks:2
+Vehicle 4 enters. Available docks:1. Nitrogen:1500 Quantum:1460
+Vehicle 7 requested a dock. Available docks:1
+Vehicle 7 enters. Available docks:0. Nitrogen:1450 Quantum:1460
+Vehicle 2 requested a dock. Available docks:0
+Vehicle 8 requested a dock. Available docks:0
+Vehicle 10 left. Available docks:1. Nitrogen:1400 Quantum:1367
+Vehicle 2 enters. Available docks:0. Nitrogen:1400 Quantum:1367
+Supply Vehicle 1 requested a dock. Available docks:0
+Vehicle 3 requested a dock. Available docks:0
+Vehicle 4 left. Available docks:1. Nitrogen:1347 Quantum:1349
+Vehicle 8 enters. Available docks:0. Nitrogen:1347 Quantum:1349
+Vehicle 7 left. Available docks:1. Nitrogen:1344 Quantum:1349
+Vehicle 3 enters. Available docks:0. Nitrogen:1344 Quantum:1349
+Vehicle 2 left. Available docks:1. Nitrogen:1344 Quantum:1310
+Supply Vehicle 2 requested a dock. Available docks:1
+Vehicle 3 left. Available docks:2. Nitrogen:1344 Quantum:1310
+Vehicle 8 left. Available docks:3. Nitrogen:1344 Quantum:1310
+Vehicle 1 requested a dock. Available docks:3
+Vehicle 1 enters. Available docks:2. Nitrogen:1344 Quantum:1310
+Vehicle 9 requested a dock. Available docks:2
+Vehicle 9 enters. Available docks:1. Nitrogen:1292 Quantum:1310
+Vehicle 1 left. Available docks:2. Nitrogen:1277 Quantum:1310
+Vehicle 5 requested a dock. Available docks:2
+Vehicle 5 enters. Available docks:1. Nitrogen:1277 Quantum:1310
+Vehicle 9 left. Available docks:2. Nitrogen:1277 Quantum:1232
+Vehicle 6 requested a dock. Available docks:2
+Vehicle 6 enters. Available docks:1. Nitrogen:1277 Quantum:1232
+Vehicle 2 requested a dock. Available docks:1
+Vehicle 2 enters. Available docks:0. Nitrogen:1253 Quantum:1232
+Vehicle 10 requested a dock. Available docks:0
+Vehicle 5 left. Available docks:1. Nitrogen:1253 Quantum:1162
+Vehicle 10 enters. Available docks:0. Nitrogen:1253 Quantum:1162
+Vehicle 7 requested a dock. Available docks:0
+Vehicle 4 requested a dock. Available docks:0
+Vehicle 8 requested a dock. Available docks:0
+Vehicle 6 left. Available docks:1. Nitrogen:1192 Quantum:1075
+Vehicle 7 enters. Available docks:0. Nitrogen:1192 Quantum:1075
+Vehicle 2 left. Available docks:1. Nitrogen:1137 Quantum:1019
+Vehicle 4 enters. Available docks:0. Nitrogen:1137 Quantum:1019
+Vehicle 10 left. Available docks:1. Nitrogen:1106 Quantum:953
+Vehicle 8 enters. Available docks:0. Nitrogen:1106 Quantum:953
+Vehicle 7 left. Available docks:1. Nitrogen:1007 Quantum:953
+Vehicle 4 left. Available docks:2. Nitrogen:1007 Quantum:953
+Vehicle 1 requested a dock. Available docks:2
+Vehicle 1 enters. Available docks:1. Nitrogen:1007 Quantum:953
+Vehicle 8 left. Available docks:2. Nitrogen:946 Quantum:873
+Supply Vehicle 1 enters. Available docks:1. Nitrogen:946 Quantum:873
+Vehicle 5 requested a dock. Available docks:1
+Vehicle 5 enters. Available docks:0. Nitrogen:1446 Quantum:1317
+Vehicle 1 left. Available docks:1. Nitrogen:1376 Quantum:1317
+Supply Vehicle resupplied the station
+SupplyVehicle 1 left. Available docks:2. Nitrogen:1376 Quantum:1317
+Vehicle 2 requested a dock. Available docks:2
+Vehicle 2 enters. Available docks:1. Nitrogen:1376 Quantum:1317
+Vehicle 9 requested a dock. Available docks:1
+Vehicle 9 enters. Available docks:0. Nitrogen:1365 Quantum:1283
+Vehicle 3 requested a dock. Available docks:0
+Vehicle 5 left. Available docks:1. Nitrogen:1365 Quantum:1279
+Vehicle 3 enters. Available docks:0. Nitrogen:1365 Quantum:1279
+Vehicle 9 left. Available docks:1. Nitrogen:1356 Quantum:1232
+Vehicle 6 requested a dock. Available docks:1
+Vehicle 6 enters. Available docks:0. Nitrogen:1356 Quantum:1232
+Vehicle 2 left. Available docks:1. Nitrogen:1356 Quantum:1160
+Vehicle 3 left. Available docks:2. Nitrogen:1356 Quantum:1160
+Vehicle 6 left. Available docks:3. Nitrogen:1356 Quantum:1160
+Vehicle 1 requested a dock. Available docks:3
+Vehicle 1 enters. Available docks:2. Nitrogen:1356 Quantum:1160
+Vehicle 10 requested a dock. Available docks:2
+Vehicle 10 enters. Available docks:1. Nitrogen:1292 Quantum:1160
+Vehicle 4 requested a dock. Available docks:1
+Vehicle 4 enters. Available docks:0. Nitrogen:1236 Quantum:1140
+Vehicle 1 left. Available docks:1. Nitrogen:1162 Quantum:1098
+Vehicle 7 requested a dock. Available docks:1
+Vehicle 7 enters. Available docks:0. Nitrogen:1162 Quantum:1098
+Vehicle 4 left. Available docks:1. Nitrogen:1162 Quantum:1097
+Vehicle 5 requested a dock. Available docks:1
+Vehicle 5 enters. Available docks:0. Nitrogen:1162 Quantum:1097
+Supply Vehicle 1 requested a dock. Available docks:0
+Vehicle 8 requested a dock. Available docks:0
+Vehicle 9 requested a dock. Available docks:0
+Vehicle 7 left. Available docks:1. Nitrogen:1162 Quantum:1010
+Vehicle 8 enters. Available docks:0. Nitrogen:1162 Quantum:1010
+Vehicle 10 left. Available docks:1. Nitrogen:1074 Quantum:916
+Vehicle 9 enters. Available docks:0. Nitrogen:1074 Quantum:916
+Vehicle 5 left. Available docks:1. Nitrogen:1074 Quantum:841
+Vehicle 8 left. Available docks:2. Nitrogen:1074 Quantum:841
+Vehicle 9 left. Available docks:3. Nitrogen:1074 Quantum:841
+Vehicle 3 requested a dock. Available docks:3
+Vehicle 3 enters. Available docks:2. Nitrogen:1074 Quantum:841
+Vehicle 3 left. Available docks:3. Nitrogen:993 Quantum:841
+Supply Vehicle 2 enters. Available docks:2. Nitrogen:993 Quantum:841
+Supply Vehicle resupplied the station
+SupplyVehicle 2 left. Available docks:3. Nitrogen:1493 Quantum:1316
+Vehicle 6 requested a dock. Available docks:3
+Vehicle 6 enters. Available docks:2. Nitrogen:1493 Quantum:1316
+Vehicle 6 left. Available docks:3. Nitrogen:1417 Quantum:1223
+All space vehicles returned. Terminating Supply Vehicle
+Simulation over, terminating Supply Vehicle 1
+Supply Vehicle 2 requested a dock. Available docks:3
+Simulation over, terminating Supply Vehicle 2
+Main thread finished execution.

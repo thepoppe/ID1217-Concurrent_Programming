@@ -62,6 +62,7 @@ public class FuelStation {
                 while(vehicleQueue.peek() != Thread.currentThread() || this.occupiedStations == this.stationCapacity){
                     try {
                         wait();
+                        //System.out.printf("Vehicle %d is asked to wait\n",id);
                     } catch (InterruptedException e) {
                     }
                 }
@@ -75,7 +76,7 @@ public class FuelStation {
         else{
             while (this.occupiedStations == this.stationCapacity || !isFuelAvailable(request)){
                 try {
-                    //System.out.printf("Space Vehicle %d is asked to wait\n",id);
+                    //System.out.printf("Vehicle %d is asked to wait\n",id);
                     wait();
                 } catch (InterruptedException e) {
                 }
@@ -126,8 +127,8 @@ public class FuelStation {
 
     @Override
     public String toString() {
-        return String.format("FuelStation Status - Nitrogen: %d/%d, Quantum: %d/%d, Occupied Stations: %d/%d, Simulation Over: %b",
-                availableNitrogen, nitrogenCapacity, availableQuantum, quantumCapacity, occupiedStations, stationCapacity, simulationOver);
+        return String.format("FuelStation Status - Nitrogen: %d/%d, Quantum: %d/%d, Occupied Stations: %d/%d, useFifo: %s, Simulation Over: %b",
+                availableNitrogen, nitrogenCapacity, availableQuantum, quantumCapacity, occupiedStations, stationCapacity, useFifo, simulationOver);
     }
 
 }
