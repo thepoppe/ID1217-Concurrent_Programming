@@ -61,7 +61,7 @@ public class Main{
         }
 
         System.out.println(station);
-        System.out.printf("%d SpaceVehicles and %d SupplyVehicles running\n", nofVehicles, nofSupplyVehicles);
+        System.out.printf("%d Vehicles and %d SupplyVehicles running\n", nofVehicles, nofSupplyVehicles);
         System.out.println("Vehicle max fuel request: 100, Number of request: "+requests+"\nSupplyVehicle deposit: 500\n");
         System.out.println("Simulation starting...\n");
 

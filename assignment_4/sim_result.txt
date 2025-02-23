@@ -1,5 +1,5 @@
 FuelStation Status - Nitrogen: 1500/1500, Quantum: 1500/1500, Occupied Stations: 0/3, useFifo: true, Simulation Over: false
-10 SpaceVehicles and 2 SupplyVehicles running
+10 Vehicles and 2 SupplyVehicles running
 Vehicle max fuel request: 100, Number of request: 3
 SupplyVehicle deposit: 500
 
