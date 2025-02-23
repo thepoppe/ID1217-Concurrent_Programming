@@ -12,9 +12,9 @@ public class FuelStation {
     private ConcurrentLinkedQueue<Thread> vehicleQueue;
     private ConcurrentLinkedQueue<Thread> supplyQueue;
     
-    public FuelStation(int maxNitrogen, int maxQuantum, int maxStations, boolean useFifo){
-        this.nitrogenCapacity = maxNitrogen;
-        this.quantumCapacity = maxQuantum;
+    public FuelStation(int maxFuelQuantity, int maxStations, boolean useFifo){
+        this.nitrogenCapacity = maxFuelQuantity;
+        this.quantumCapacity = maxFuelQuantity;
         this.stationCapacity = maxStations;
 
         this.availableNitrogen = this.nitrogenCapacity;
