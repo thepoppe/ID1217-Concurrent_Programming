@@ -16,6 +16,9 @@ public class SpaceVehicle implements Runnable{
         this.maxResupply = S;
     }
 
+    protected int getId(){
+        return id;
+    }
     protected FuelStation getFuelStation(){
         return this.station;
     }
@@ -55,21 +58,34 @@ public class SpaceVehicle implements Runnable{
         return new FuelRequest(nitro, quantum);
     }
 
+    protected void leaveDockingStation(){
+        station.leaveDockingStation(id, this.getClass().getName());
+    }
+
     @Override
     public void run() {
         while (maxResupply > 0){
             sleepLong();
             FuelRequest request = createFuelRequest();
             try {
-                station.requestDockingStation(request);
-                sleepShort();
-                System.out.printf("Vehicle %d refuel %d l nitrogen and %d l quantum\n",id, request.getNitroAmount(), request.getQuantumAmount());
-                station.leaveDockingStation();
+                station.requestDockingStation(request, id);
             } catch (Exception e) {
             }
+            sleepShort();
+            leaveDockingStation();
             maxResupply -= 1;
         }
     }
 
+
+    @Override
+    public String toString() {
+        return "SpaceVehicle{" +
+                "id=" + id +
+                ", nitrogenCapacity=" + nitrogenCapacity +
+                ", quantomCapacity=" + quantomCapacity +
+                ", maxResupply=" + maxResupply +
+                '}';
+    }
 
 }

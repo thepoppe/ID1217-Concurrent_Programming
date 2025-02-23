@@ -37,27 +37,40 @@ Is your solution fair? Explain when presenting homework.
  */
 public class Main{
     public static void main(String[] args){
-        FuelStation station = new FuelStation(1000, 1000, 1);
-        int nofVehicles = 5;
+        boolean isFifo = true;
+        FuelStation station = new FuelStation(1000, 1000, 5, isFifo);
+        int nofVehicles = 10;
+        int nofSupplyVehicles = 2;
         Thread[] threads = new Thread[nofVehicles];
         for (int i = 0; i < nofVehicles; i++){
-            threads[i] = new Thread(new SpaceVehicle(station, i, 100, 100, 5));
+            threads[i] = new Thread(new SpaceVehicle(station, i+1, 100, 100, 5));
+        }
+        Thread[] supplyThreads = new Thread[nofSupplyVehicles];
+        for (int i = 0; i < nofSupplyVehicles; i++){
+            supplyThreads[i] = new Thread(new SupplyVehicle(station, i+1, 200, 200));
         }
 
-        Thread supplyVehicle = new Thread(new SupplyVehicle(station, 1, 200, 200, 4));
+        System.out.println("Fuelstation init:\n" + station);
+        System.out.printf("%d SpaceVehicles and %d SupplyVehicles running\n", nofVehicles, nofSupplyVehicles);
+        System.out.println("Simulation starting");
+
         for (int i = 0; i < nofVehicles; i++) {
             threads[i].start();   
         }
-
-        supplyVehicle.start();
+        for (int i = 0; i < nofSupplyVehicles; i++){
+            supplyThreads[i].start();
+        }
         
         
         try {
             for (int i = 0; i < nofVehicles; i++) {
                 threads[i].join();   
             }
-            supplyVehicle.interrupt();
-            supplyVehicle.join();
+            System.out.println("All space vehicles returned. Terminating Supply Vehicle");
+            station.setSimulationOver();
+            for (int i = 0; i < nofSupplyVehicles; i++){
+                supplyThreads[i].join();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
