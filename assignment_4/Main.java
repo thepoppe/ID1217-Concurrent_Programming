@@ -37,22 +37,25 @@ Is your solution fair? Explain when presenting homework.
  */
 public class Main{
     public static void main(String[] args){
-        boolean isFifo = true;
-        FuelStation station = new FuelStation(1000, 1000, 5, isFifo);
+        boolean useFifo = true;
         int nofVehicles = 10;
         int nofSupplyVehicles = 2;
+        int maxDocks = 3;
+        
+        FuelStation station = new FuelStation(1500, 1500, maxDocks, useFifo);
         Thread[] threads = new Thread[nofVehicles];
-        for (int i = 0; i < nofVehicles; i++){
-            threads[i] = new Thread(new SpaceVehicle(station, i+1, 100, 100, 5));
-        }
         Thread[] supplyThreads = new Thread[nofSupplyVehicles];
+
+        for (int i = 0; i < nofVehicles; i++){
+            threads[i] = new Thread(new Vehicle(station, i+1, 100, 100, 5));
+        }
         for (int i = 0; i < nofSupplyVehicles; i++){
             supplyThreads[i] = new Thread(new SupplyVehicle(station, i+1, 200, 200));
         }
 
         System.out.println("Fuelstation init:\n" + station);
         System.out.printf("%d SpaceVehicles and %d SupplyVehicles running\n", nofVehicles, nofSupplyVehicles);
-        System.out.println("Simulation starting");
+        System.out.println("Simulation starting...\n");
 
         for (int i = 0; i < nofVehicles; i++) {
             threads[i].start();   
@@ -60,7 +63,6 @@ public class Main{
         for (int i = 0; i < nofSupplyVehicles; i++){
             supplyThreads[i].start();
         }
-        
         
         try {
             for (int i = 0; i < nofVehicles; i++) {

@@ -1,5 +1,3 @@
-
-import java.util.Random;
 import java.util.concurrent.*;
 
 public class FuelStation {
@@ -11,7 +9,8 @@ public class FuelStation {
     private int occupiedStations; //V
     private boolean simulationOver = false;
     private boolean useFifo;
-    private ConcurrentLinkedQueue<Thread> queue;
+    private ConcurrentLinkedQueue<Thread> vehicleQueue;
+    private ConcurrentLinkedQueue<Thread> supplyQueue;
     
     public FuelStation(int maxNitrogen, int maxQuantum, int maxStations, boolean useFifo){
         this.nitrogenCapacity = maxNitrogen;
@@ -23,7 +22,8 @@ public class FuelStation {
         this.occupiedStations = 0;
         this.useFifo = useFifo;
         if (useFifo)
-            queue = new ConcurrentLinkedQueue<>();
+            vehicleQueue = new ConcurrentLinkedQueue<>();
+            supplyQueue = new ConcurrentLinkedQueue<>();
 
     }
 
@@ -35,13 +35,17 @@ public class FuelStation {
         return this.simulationOver;
     }
 
+    private int availableDocks(){
+        return this.stationCapacity - this.occupiedStations;
+    }
+
     private boolean isFuelAvailable(FuelRequest request){
         return request.getNitroAmount() <= this.availableNitrogen  && request.getQuantumAmount() <= this.availableQuantum;
     }
     private void adjustFuelSupplies(int nitrogenAmount, int quantumAmount){
         this.availableNitrogen += nitrogenAmount;
         this.availableQuantum += quantumAmount;
-        System.out.printf("Available: Nitro:%d Quantum:%d\n",this.availableNitrogen, this.availableQuantum);
+        //System.out.printf("Available: Nitro:%d Quantum:%d\n",this.availableNitrogen, this.availableQuantum);
     }
 
     private int toNegative(int amount){
@@ -49,16 +53,36 @@ public class FuelStation {
     }
     
     public synchronized void requestDockingStation(FuelRequest request, int id){
-        System.out.printf("Space Vehicle %d requested a docking station\n",id);
-        while (this.occupiedStations == this.stationCapacity || !isFuelAvailable(request)){
-            try {
-                System.out.printf("Space Vehicle %d is asked to wait\n",id);
-                wait();
-            } catch (InterruptedException e) {
+        System.out.printf("Vehicle %d requested a dock. Available docks:%d\n",id, availableDocks());
+        
+        // fifo logic separated for presentation 
+        if(useFifo){
+            vehicleQueue.add(Thread.currentThread());
+            while(true){
+                while(vehicleQueue.peek() != Thread.currentThread() || this.occupiedStations == this.stationCapacity){
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                    }
+                }
+                vehicleQueue.poll();
+                if (isFuelAvailable(request))
+                    break;
+                else
+                    vehicleQueue.add(Thread.currentThread());
             }
         }
-        System.out.printf("Space Vehicle %d can enter the docking station, total number of used docks is %d\n",id, (this.occupiedStations));
+        else{
+            while (this.occupiedStations == this.stationCapacity || !isFuelAvailable(request)){
+                try {
+                    //System.out.printf("Space Vehicle %d is asked to wait\n",id);
+                    wait();
+                } catch (InterruptedException e) {
+                }
+            }
+        }
         occupiedStations += 1;
+        System.out.printf("Vehicle %d enters. Available docks:%d. Nitrogen:%d Quantum:%d\n",id, availableDocks(),this.availableNitrogen, this.availableQuantum);
         adjustFuelSupplies(toNegative(request.getNitroAmount()),toNegative(request.getQuantumAmount()));
     }
 
@@ -68,20 +92,26 @@ public class FuelStation {
     }
     
     public synchronized void requestoRefuel(FuelRequest deposit, FuelRequest request, int id){
-        System.out.printf("Supply Vehicle %d requested a docking station\n",id);
-        while (this.occupiedStations == this.stationCapacity || !isPossibleToDeposit(deposit)){
+        System.out.printf("Supply Vehicle %d requested a dock. Available docks:%d\n",id, availableDocks());
+        if (useFifo)
+            supplyQueue.add(Thread.currentThread());
+        while (this.occupiedStations == this.stationCapacity ||
+             !isPossibleToDeposit(deposit)||
+            (useFifo && supplyQueue.peek() != Thread.currentThread())){
             if(simulationOver){
                 notifyAll();
                 return;
             }
             try {
-                System.out.printf("Supply Vehicle %d is asked to wait\n",id);
+                //System.out.printf("Supply Vehicle %d is asked to wait\n",id);
                 wait();
             } catch (InterruptedException e) {
             }
         }
-        System.out.printf("Supply Vehicle %d can enter the docking station, total number of used docks is %d\n",id, (this.occupiedStations));
+        if (useFifo)
+            supplyQueue.poll();
         occupiedStations += 1;
+        System.out.printf("Supply Vehicle %d enters. Available docks:%d. Nitrogen:%d Quantum:%d\n",id, availableDocks(),this.availableNitrogen, this.availableQuantum);
         int nitrogen = deposit.getNitroAmount() - request.getNitroAmount();
         int quantum = deposit.getQuantumAmount() - request.getQuantumAmount();
         adjustFuelSupplies(nitrogen, quantum);
@@ -89,9 +119,8 @@ public class FuelStation {
 
     public synchronized  void leaveDockingStation(int id, String type) {
         occupiedStations -= 1;
-        System.out.printf("%s %d left the docking station\n",type, id);
-        System.out.printf("Fuelstation supplies. nitro:%d quantum:%d\n", 
-            this.availableNitrogen, this.availableQuantum);
+        System.out.printf("%s %d left. Available docks:%d. Nitrogen:%d Quantum:%d\n",type, id, availableDocks(),this.availableNitrogen, this.availableQuantum);
+        //System.out.printf("Fuelstation supplies. nitro:%d quantum:%d\n", this.availableNitrogen, this.availableQuantum);
         notifyAll();
     }
 

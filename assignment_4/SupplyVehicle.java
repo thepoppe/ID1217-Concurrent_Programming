@@ -1,6 +1,6 @@
-public class SupplyVehicle extends SpaceVehicle{
-    int nitrogenRefill = 400;
-    int quantumRefill = 400;
+public class SupplyVehicle extends Vehicle{
+    int nitrogenRefill = 500;
+    int quantumRefill = 500;
     public SupplyVehicle(FuelStation station, int id, int N, int Q) {
         super(station, id, N, Q, 0);
     }
@@ -30,11 +30,5 @@ public class SupplyVehicle extends SpaceVehicle{
             System.out.printf("Supply Vehicle resupplied the station\n");
             leaveDockingStation();
         }
-    }
-    @Override
-    public String toString() {
-        return super.toString() + 
-               ", nitrogenRefill=" + nitrogenRefill + 
-               ", quantumRefill=" + quantumRefill;
     }
 }

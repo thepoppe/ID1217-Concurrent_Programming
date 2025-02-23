@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class SpaceVehicle implements Runnable{
+public class Vehicle implements Runnable{
     private final FuelStation station;
     private final int id;
     private final int nitrogenCapacity;
@@ -8,28 +8,18 @@ public class SpaceVehicle implements Runnable{
     private int maxResupply;
     private final Random random = new Random();
 
-    public SpaceVehicle(FuelStation station,int id, int N, int Q, int S){
+    public Vehicle(FuelStation station,int id, int N, int Q, int nofRequests){
         this.station = station;
         this.id = id;
         this.nitrogenCapacity = N;
         this.quantomCapacity = Q;
-        this.maxResupply = S;
+        this.maxResupply = nofRequests;
     }
-
     protected int getId(){
         return id;
     }
     protected FuelStation getFuelStation(){
         return this.station;
-    }
-    protected Random getRandom(){
-        return this.random;
-    }
-    protected int getMaxResupply(){
-        return this.maxResupply;
-    }
-    protected void decrementMaxResupply(){
-        this.maxResupply -= 1;
     }
 
     protected void sleepLong(){
@@ -75,17 +65,6 @@ public class SpaceVehicle implements Runnable{
             leaveDockingStation();
             maxResupply -= 1;
         }
-    }
-
-
-    @Override
-    public String toString() {
-        return "SpaceVehicle{" +
-                "id=" + id +
-                ", nitrogenCapacity=" + nitrogenCapacity +
-                ", quantomCapacity=" + quantomCapacity +
-                ", maxResupply=" + maxResupply +
-                '}';
     }
 
 }
