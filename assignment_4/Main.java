@@ -37,12 +37,18 @@ Is your solution fair? Explain when presenting homework.
  */
 public class Main{
     public static void main(String[] args){
+        for (int i = 0; i < 100; i++){
+            runSimulation();
+        }
+    }
+    private static void runSimulation(){
         boolean useFifo = true;
-        int nofVehicles = 10;
-        int nofSupplyVehicles = 2;
-        int maxDocks = 3;
+        int nofVehicles = 100;
+        int nofSupplyVehicles = 15;
+        int maxDocks = 10;
+        int quantity = 1000 * maxDocks;
         
-        FuelStation station = new FuelStation(1500, 1500, maxDocks, useFifo);
+        FuelStation station = new FuelStation(quantity, maxDocks, useFifo);
         Thread[] threads = new Thread[nofVehicles];
         Thread[] supplyThreads = new Thread[nofSupplyVehicles];
 
