@@ -21,10 +21,11 @@ public class FuelStation {
         this.availableQuantum = this.quantumCapacity;
         this.occupiedStations = 0;
         this.useFifo = useFifo;
-        if (useFifo)
+        if (useFifo){
             vehicleQueue = new ConcurrentLinkedQueue<>();
             supplyQueue = new ConcurrentLinkedQueue<>();
-
+        }
+            
     }
 
     public synchronized void setSimulationOver() {
