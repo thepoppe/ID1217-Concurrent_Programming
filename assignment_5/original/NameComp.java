@@ -1,6 +1,8 @@
+package original;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+
 
 public class NameComp extends UnicastRemoteObject implements NameCompInterface {
     String myName;
@@ -70,6 +72,12 @@ public class NameComp extends UnicastRemoteObject implements NameCompInterface {
     public void printCommon() throws RemoteException {
         System.out.println("Proc " + myName + " found:");
         System.out.println(common + "\n");
+    }
+
+    /* Used in altenative solution */
+    @Override
+    public boolean isDone() throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 

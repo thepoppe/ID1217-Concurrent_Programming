@@ -1,3 +1,4 @@
+package original;
 import java.util.Random;
 
 public class NameGenerator {
