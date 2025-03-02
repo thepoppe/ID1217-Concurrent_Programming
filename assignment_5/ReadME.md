@@ -77,7 +77,7 @@ class invokes the main function to start the code for each Process.
     - collectOtherRemotes(): performs a busy wait until all three processes are registered which
         is not an ideal solution but works to enforce a wait to see the three processes work simulataneous.
     - findCommonNames(): is the main worker which performs the same algorithm as Client.java
-    - waitForOthers(): Also uses a busy wait to wait for the other processes once completed
+    - waitForOthers(): Also uses a busy wait to wait for the other processes to complete
 - ProcessF, ProcessG, ProcessH: enherits from the NameProcess.java and provides the Main function to start
     the Process. ProcessF has additional responsible to create the registry while the other just collects it.
     Not ideal but I had troubles starting the rmi registry otherwise.
