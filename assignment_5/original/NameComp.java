@@ -40,16 +40,19 @@ public class NameComp extends UnicastRemoteObject implements NameCompInterface {
 
     
     @Override
-    public String getName(int id) throws RemoteException {
+    public synchronized String getName(int id) throws RemoteException {
         if (id < 0 || id >= names.length ){
             throw new RemoteException("list completed");
-        } 
+        }
+        if (common.contains(names[id])) {
+            return null;
+        }
         return names[id];
     }
 
 
     @Override
-    public boolean checkName(String name) throws RemoteException {
+    public synchronized boolean checkName(String name) throws RemoteException {
         if (common.contains(name))
             return true;
         
@@ -64,12 +67,13 @@ public class NameComp extends UnicastRemoteObject implements NameCompInterface {
     }
 
     @Override
-    public void notifyCommon(String name) throws RemoteException {
-        this.common.add(name);
+    public synchronized void notifyCommon(String name) throws RemoteException {
+        if (!common.contains(name))
+            this.common.add(name);
     }
 
     @Override
-    public void printCommon() throws RemoteException {
+    public synchronized void printCommon() throws RemoteException {
         System.out.println("Proc " + myName + " found:");
         System.out.println(common + "\n");
     }

@@ -54,13 +54,16 @@ public class NameProcess extends UnicastRemoteObject implements NameCompInterfac
     public String getName(int id) throws RemoteException {
         if (id < 0 || id >= names.length ){
             throw new RemoteException("list completed");
-        } 
+        }
+        if (common.contains(names[id])) {
+            return null;
+        }
         return names[id];
     }
 
 
     @Override
-    public boolean checkName(String name) throws RemoteException {
+    public synchronized boolean checkName(String name) throws RemoteException {
         if (common.contains(name))
             return true;
         
@@ -75,13 +78,13 @@ public class NameProcess extends UnicastRemoteObject implements NameCompInterfac
     }
 
     @Override
-    public void notifyCommon(String name) throws RemoteException {
+    public synchronized void notifyCommon(String name) throws RemoteException {
         if(!common.contains(name))
             this.common.add(name);
     }
 
     @Override
-    public void printCommon() throws RemoteException {
+    public synchronized void printCommon() throws RemoteException {
         System.out.println("Proc " + myName + " found " + common.size() + " names:");
         System.out.println(common + "\n");
     }
@@ -132,6 +135,10 @@ public class NameProcess extends UnicastRemoteObject implements NameCompInterfac
             } catch (RemoteException e) {
                 break;
             }
+
+            if (name == null) {
+                continue;
+            }
          
             for (NameCompInterface remoteProc : remoteProcesses) {
                 if (remoteProc.checkName(name) == false){
@@ -155,22 +162,24 @@ public class NameProcess extends UnicastRemoteObject implements NameCompInterfac
         String[] other = new String[2];
 
         switch (this.myName) {
-            case "F" -> {
+            case "F": {
                 other[0] = "G";
                 other[1] = "H";
+                break;
             }
-            case "G" -> {
+            case "G": {
                 other[0] = "H";
                 other[1] = "F";
+                break;
             }
-            case "H" -> {
+            case "H": {
                 other[0] = "F";
                 other[1] = "G";
+                break;
             }
-
-            default -> System.exit(1);
+            default: System.exit(1);
         }
-    
+
         return other;
     }
 
@@ -190,7 +199,7 @@ public class NameProcess extends UnicastRemoteObject implements NameCompInterfac
     }
 
     @Override
-    public boolean isDone() throws RemoteException {
+    public synchronized boolean isDone() throws RemoteException {
         return isDone;
     }
 

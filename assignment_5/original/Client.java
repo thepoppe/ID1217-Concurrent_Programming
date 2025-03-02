@@ -43,6 +43,9 @@ public class Client {
                 try {
                     int found = 0;
                     String name = self.getName(i++);
+                    if (name == null) {
+                        continue;
+                    }
                     for (NameCompInterface remoteProc : others) {
                         if (remoteProc.checkName(name) == false){
                             break;
