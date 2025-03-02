@@ -1,13 +1,17 @@
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class NameComp extends UnicastRemoteObject implements NameCompInterface {
+    String myName;
     String[] names;
-    String[] commonNames;
-    NameComp(int size) throws RemoteException {
+    ArrayList<String> common;
+
+    NameComp(String name, int size) throws RemoteException {
         super();
+        this.myName = name;
         this.names = new String[size];
-        this.commonNames = new String[size];
+        this.common = new ArrayList<>();
         generateNames(size);
     }
     
@@ -35,15 +39,21 @@ public class NameComp extends UnicastRemoteObject implements NameCompInterface {
     
     @Override
     public String getName(int id) throws RemoteException {
-       return names[id];
+        if (id < 0 || id >= names.length ){
+            throw new RemoteException("list completed");
+        } 
+        return names[id];
     }
 
 
     @Override
     public boolean checkName(String name) throws RemoteException {
+        if (common.contains(name))
+            return true;
+        
         boolean found = false;
-        for (int i = 0; i < names.length; i++) {
-            if (names[i].equals(name)) {
+        for (String name1 : names) {
+            if (name1.equals(name)) {
                 found = true;
                 break;
             }
@@ -52,8 +62,14 @@ public class NameComp extends UnicastRemoteObject implements NameCompInterface {
     }
 
     @Override
-    public int getSize() throws RemoteException {
-        return names.length;
+    public void notifyCommon(String name) throws RemoteException {
+        this.common.add(name);
+    }
+
+    @Override
+    public void printCommon() throws RemoteException {
+        System.out.println("Proc " + myName + " found:");
+        System.out.println(common + "\n");
     }
 
 

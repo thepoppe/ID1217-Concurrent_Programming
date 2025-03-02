@@ -1,3 +1,5 @@
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -35,31 +37,50 @@ public class Client {
             }
             
             System.out.println("Process " + processId + " started.");
-            String[] commonNames = new String[self.getSize()];
-            int nameCount = 0;
-            for (int i = 0; i < commonNames.length; i++) {
-                int found = 0;
-                String name = self.getName(i);
-                for (NameCompInterface remoteProc : others) {
-                    if (remoteProc.checkName(name) == false){
-                        break;
-                    };
-                    found++;
-                }
-                if (found == 2) {
-                    commonNames[nameCount++] = name;
+            int i = 0;
+            while (true){
+                try {
+                    int found = 0;
+                    String name = self.getName(i++);
+                    for (NameCompInterface remoteProc : others) {
+                        if (remoteProc.checkName(name) == false){
+                            break;
+                        }
+                        found++;
+                    }
+                    if (found == others.length) {
+                        self.notifyCommon(name);
+                        for (NameCompInterface remoteProc : others){
+                            remoteProc.notifyCommon(name);
+                        }
+                    }
+                    
+                } catch (RemoteException e) {
+                    System.out.println("Iterated over the entire Remote Name List");
+                    break;
                 }
             }
-            System.out.println("Common names:");
-            for (int i = 0; i < nameCount; i++) {
-                if (i == nameCount - 1) System.out.println(commonNames[i]);
-                else System.out.print(commonNames[i]+", ");
-            }
-            System.out.println("Number of common names: " + nameCount);
+
+
+            verifyCommonNames(self, others);
+
+
             System.out.println("Process " + processId + " finished.");
             
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (RemoteException | NotBoundException e) {
+            System.err.println("Client failed");
+        }
+    }   
+
+    private static void verifyCommonNames(NameCompInterface self, NameCompInterface[] others) {
+        try {
+            self.printCommon();
+            for(NameCompInterface proc : others){
+                proc.printCommon();
+            }
+            
+        } catch (RemoteException e) {
+            System.err.println("Could not print the lists");
         }
     }
 }
